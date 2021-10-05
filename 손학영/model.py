@@ -10,30 +10,43 @@ app = FastAPI()
 # app.mount("/static", StaticFiles(directory = "static"), name = "static")
 templates = Jinja2Templates(directory = "templates")
 
+
 @app.get('/', response_class=HTMLResponse)
 async def home(request : Request) :
     return templates.TemplateResponse("input.html", context={"request": request})
 
 
-@app.post("/info", response_class=HTMLResponse)
-async def info(request : Request, sex : str = Form(...), age : int = Form(...), sido : str = Form(...),
-               type : str = Form(...), jucode : str = Form(...), bucode : str = Form(...),
-               rate : str = Form(...), day : str = Form(...)) :
-    # 변수 타입 처리
-    sex = int(sex)
-    sido = int(sido)
-    type = int(type)
-    rate = float(rate)
-    day = int(day)
+@app.post("/info")
+async def info(request : Request, sex: int = Form(...), age: int = Form(...), sido: int = Form(...),
+                   type: int = Form(...), jucode: str = Form(...), bucode: str = Form(...),
+                   rate: int = Form(...), day: int = Form(...)):
 
+
+    # 주상병코드, 부상병코드 처리
+    eng_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+                    'V', 'W', 'X', 'Y', 'Z']
+    code_dict = dict(zip(eng_list, [i for i in range(len(eng_list))]))
+    jucode = code_dict[jucode]
+    bucode = code_dict[bucode]
+
+    # 나이 처리
     age = (age//10)*10
 
+    # 모델 불러오기
+    import joblib
+    load_model = joblib.load('tree_model.pkl')
 
-    result = "입원 환자입니다."
-    # result = model.predict(sex, age, sido, type, jucode, bucode, rate, day)
+    # 예측하기
+    predict= load_model.predict([[sex, age, sido, type, jucode, bucode, rate, day]])
+    result = int(predict[0])
 
-    return result
-    # return templates.TemplateResponse("output.html",  {"request": request, "result" : result})
+    if result == 0 :
+        answer = "비입원 환자입니다"
+    elif result == 1 :
+        answer = "입원환자입니다."
+
+
+    return templates.TemplateResponse("output.html", {"request":request, "answer" : answer})
 
 ngrok_tunnel = ngrok.connect(8000)
 print ('Public URL:', ngrok_tunnel.public_url)

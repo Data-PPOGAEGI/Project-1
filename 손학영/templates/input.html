@@ -1,13 +1,14 @@
 <html>
     <head>
         <title>정보입력</title>
+
     </head>
 
     <body>
         <h2><strong>입원여부 알아보기</strong></h2>
         <fieldset>
-            <legend>기본정보</legend>
-            <form method = "post" action = "/info/">
+            <legend><strong>기본정보</strong></legend>
+            <form method = "post" action = "/info">
                 성별 : <input type="radio" name="sex" value="1"/>남성
                 <input type="radio" name="sex" value="2"/>여성
                 <br>
@@ -71,17 +72,17 @@
                 </select>
                 <br>
                 <br>
-                <span>*코드의 첫 번째 영문자를 대문자로 입력해주세요*</span> <br>
+                <span class = "caution">*코드의 첫 번째 영문자를 대문자로 입력해주세요*</span> <br>
                 주상병코드 : <input type = "text" name= "jucode"/> <br>
                 부상병코드 : <input type = "text" name= "bucode"/> <br>
                 <br>
                 해당 병원 심결가산율 : 
                 <select name = "rate"> 
                     <option value = "0"> 0% </option>
-                    <option value = "0.15"> 15% </option>
-                    <option value = "0.20"> 20% </option>
-                    <option value = "0.25"> 25% </option>
-                    <option value = "0.30"> 30% </option>
+                    <option value = "1"> 15% </option>
+                    <option value = "2"> 20% </option>
+                    <option value = "3"> 25% </option>
+                    <option value = "4"> 30% </option>
                 </select> 
                 <br>
                 진료 요일 : 
