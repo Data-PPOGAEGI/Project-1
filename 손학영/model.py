@@ -41,7 +41,7 @@ async def info(request : Request, sex: int = Form(...), age: int = Form(...), si
     result = int(predict[0])
 
     if result == 0 :
-        answer = "비입원 환자입니다"
+        answer = "비입원 환자입니다."
     elif result == 1 :
         answer = "입원환자입니다."
 

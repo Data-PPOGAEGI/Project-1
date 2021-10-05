@@ -1,19 +1,104 @@
 <html>
     <head>
         <title>정보입력</title>
+               <style>
+                @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+                    .form {
+                        margin : 2%;
+                    }
 
+            
+                    .title {
+                        text-align: center;
+                        font-weight: normal;
+                        margin : 43%;
+                    }
+
+                    .button {
+                        text-align : center;
+                    }
+                    input[type = "text"] {
+                        width: 100%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        box-sizing: border-box;
+                        border : 2px solid #f1f1f1;
+                        border-radius : 4px;
+                        }
+                    input[type=text]:focus {
+                        border: 1px solid #4CAF50;
+                        background-color : #CCE9D0;
+                        }
+                    
+                    input[type=number]:focus {
+                        border: 1px solid #4CAF50;
+                        background-color : #CCE9D0;
+                        }
+
+                    select {
+                        width: 100%;
+                        padding: 12px 20px;
+                        border: 1px solid #BABABA;
+                        border-radius: 4px;
+                        margin : 6px 2px;
+                        }
+                    input[type = "number"] {
+                        width: 100%;
+                        padding: 12px 20px;
+                        margin: 8px 0;
+                        box-sizing: border-box;
+                        border : 2px solid #f1f1f1;
+                        border-radius : 4px;
+                        }
+                    input[type=submit] {
+                        width : 48%;
+                        background-color: #4CAF50;
+                        border: 2px solid #4CAF50;
+                        color: white;
+                        padding: 16px 32px;
+                        text-decoration: none;
+                        margin: 4px 1px;
+                        border-radius: 10px;
+                        cursor: pointer;
+                    }
+                    input[type=reset] {
+                        width : 48%;
+                        background-color: white;
+                        border: 2px solid #4CAF50;
+                        color: #4CAF50;
+                        padding: 16px 32px;
+                        text-decoration: none;
+                        margin: 4px 1px;
+                        border-radius: 10px;
+                        cursor: pointer;
+                    }
+                    hr{
+                        border : 1px solid #f1f1f1;
+                    }
+                    a {
+                        text-decoration: none;
+                    }
+                    html{
+                        font-family: "Noto Sans KR";
+                    }
+            </style>
+
+ 
     </head>
 
     <body>
-        <h2><strong>입원여부 알아보기</strong></h2>
-        <fieldset>
-            <legend><strong>기본정보</strong></legend>
+        <div style="white-space:nowrap;"><p><a href="https://bestcu115.wixsite.com/my-site-1"><span style="font-weight: bolder; font-size : 20px;">&#60;</span></a><span class = "title">환자정보 입력하기</span></p></div>
+        <hr>
+        <div class = "form">
             <form method = "post" action = "/info">
-                성별 : <input type="radio" name="sex" value="1"/>남성
-                <input type="radio" name="sex" value="2"/>여성
-                <br>
-                나이 : <input type = "number" name= "age"/> <br>
-                사는 시도 : 
+                성별  <select name= "sex"> 
+                    <option value="1">남성</option>
+                    <option value="2">여성</option>
+                    </select>
+
+                나이 <input type = "number" name= "age"/> <br>
+
+                사는 시도  
                 <select name= "sido"> 
                     <option value="11">서울시</option>
                     <option value="26">부산시</option>
@@ -34,7 +119,7 @@
                     <option value="49">제주도</option>
 
                 </select> <br>
-                진료 과목 : 
+                진료 과목 
                 <select name = "type">
                     <option value="23">가정의학과</option>
                     <option value="20">결핵과</option>
@@ -72,11 +157,10 @@
                 </select>
                 <br>
                 <br>
-                <span class = "caution">*코드의 첫 번째 영문자를 대문자로 입력해주세요*</span> <br>
-                주상병코드 : <input type = "text" name= "jucode"/> <br>
-                부상병코드 : <input type = "text" name= "bucode"/> <br>
+                주상병코드  <input type = "text" name= "jucode" placeholder = "*코드의 첫 번째 영문자를 대문자로 입력해주세요*"/> <br>
+                부상병코드  <input type = "text" name= "bucode" placeholder = "*코드의 첫 번째 영문자를 대문자로 입력해주세요*"/> <br>
                 <br>
-                해당 병원 심결가산율 : 
+                해당 병원 심결가산율 
                 <select name = "rate"> 
                     <option value = "0"> 0% </option>
                     <option value = "1"> 15% </option>
@@ -85,7 +169,7 @@
                     <option value = "4"> 30% </option>
                 </select> 
                 <br>
-                진료 요일 : 
+                진료 요일  
                 <select name = "day">
                     <option value ="0">월</option>
                     <option value ="1">화</option>
@@ -97,8 +181,10 @@
                 </select>
                 <br>
                 <br>
-                <input type = "submit" value = "확인"> &nbsp;<input type = "reset" value="취소"/>
+                <div class = "button">
+                <input type = "submit" value = "확인"> &nbsp;<input type = "reset" value="재입력"/>
+                </div>
             </form>
-        </fieldset>
+        </div>
     </body>
 </html>
