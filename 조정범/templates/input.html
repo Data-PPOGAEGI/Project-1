@@ -1,103 +1,141 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>정보입력</title>
+        <title>Test Service</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="C:\\Workspace\python\\빅데이터 지능형서비스 개발 팀프로젝트(21.9.27~10.6)\\Project-1\\조정범\\Data\\시각화자료들\\홈페이지 템플릿\\bare-gh\\assets\\favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href = "{{ url_for('static', path = '/css/styles.css') }}" rel = "stylesheet">
+        <!-- <link href="C:\\Workspace\\python\\빅데이터 지능형서비스 개발 팀프로젝트(21.9.27~10.6)\\Project-1\\조정범\\static\\styles.css" rel="stylesheet" /> -->
     </head>
-
     <body>
-        <h2><strong>입원여부 알아보기</strong></h2>
-        <fieldset>
-            <legend>기본정보</legend>
-            <form method = "post" action = "/info/">
-                성별 : <input type="radio" name="sex" value="1"/>남성
-                <input type="radio" name="sex" value="2"/>여성
-                <br>
-                나이 : <input type = "number" name= "age"/> <br>
-                사는 시도 : 
-                <select name= "sido"> 
-                    <option value="11">서울시</option>
-                    <option value="26">부산시</option>
-                    <option value="27">대구시</option>
-                    <option value="28">인천시</option>
-                    <option value="29">광주시</option>
-                    <option value="30">대전시</option>
-                    <option value="31">울산시</option>
-                    <option value="36">세종시</option>
-                    <option value="41">경기도</option>
-                    <option value="42">강원도</option>
-                    <option value="43">충청북도</option>
-                    <option value="44">충청남도</option>
-                    <option value="45">전라북도</option>
-                    <option value="46">전라남도</option>
-                    <option value="47">경상북도</option>
-                    <option value="48">경상남도</option>
-                    <option value="49">제주도</option>
-
-                </select> <br>
-                진료 과목 : 
-                <select name = "type">
-                    <option value="23">가정의학과</option>
-                    <option value="20">결핵과</option>
-                    <option value="50">구강악안면외과</option>
-                    <option value="1">내과</option>
-                    <option value="9">마취통증의학과</option>
-                    <option value="17">방사선종양학과</option>
-                    <option value="18">병리과</option>
-                    <option value="15">비뇨의학과</option>
-                    <option value="10">산부인과</option>
-                    <option value="8">성형외과</option>
-                    <option value="11">소아청소년과</option>
-                    <option value="2">신경과</option>
-                    <option value="6">신경외과</option>
-                    <option value="12">안과</option>
-                    <option value="16">영상의학과</option>
-                    <option value="26">예방의학과</option>
-                    <option value="4">외과</option>
-                    <option value="24">응급의학과</option>
-                    <option value="13">이비인후과</option>
-                    <option value="0">일반의</option>
-                    <option value="21">재활의학과</option>
-                    <option value="3">정신건강의학과</option>
-                    <option value="5">정형외과</option>
-                    <option value="25">직업환경의학과</option>
-                    <option value="19">진단검사의학과</option>
-                    <option value="52">치과교정과</option>
-                    <option value="55">치과보존과</option>
-                    <option value="14">피부과</option>
-                    <option value="80">한방내과</option>
-                    <option value="89">한방응급</option>
-                    <option value="86">한방재활의학과</option>
-                    <option value="22">핵의학과</option>
-                    <option value="7">흉부외과</option>
-                </select>
-                <br>
-                <br>
-                <span>*코드의 첫 번째 영문자를 대문자로 입력해주세요*</span> <br>
-                주상병코드 : <input type = "text" name= "jucode"/> <br>
-                부상병코드 : <input type = "text" name= "bucode"/> <br>
-                <br>
-                해당 병원 심결가산율 : 
-                <select name = "rate"> 
-                    <option value = "0"> 0% </option>
-                    <option value = "0.15"> 15% </option>
-                    <option value = "0.20"> 20% </option>
-                    <option value = "0.25"> 25% </option>
-                    <option value = "0.30"> 30% </option>
-                </select> 
-                <br>
-                진료 요일 : 
-                <select name = "day">
-                    <option value ="0">월</option>
-                    <option value ="1">화</option>
-                    <option value ="2">수</option>
-                    <option value ="3">목</option>
-                    <option value ="4">금</option>
-                    <option value ="5">토</option>
-                    <option value ="6">일</option>
-                </select>
-                <br>
-                <br>
-                <input type = "submit" value = "확인"> &nbsp;<input type = "reset" value="취소"/>
-            </form>
-        </fieldset>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">입원여부 예측서비스</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://bestcu115.wixsite.com/my-site-1">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page content-->
+        <div class="container">
+            <div class="text-center mt-5">
+                <div align="center">
+                    <fieldset style="border: 2px solid #111111; height: 465px; width: 450px; justify-content: center; background-color: #f7f3f3;">
+                        <p></p> 
+                        <legend align="left">&nbsp; ※ 환자정보를 입력해주세요</legend>
+                        <form method = "post" action = "/info/">
+                            <p align="left">
+                                &nbsp; &nbsp; &nbsp; ㆍ 성별 : <input type="radio" name="sex" value="1"/>남성
+                                <input type="radio" name="sex" value="2"/>여성
+                            </p>
+                            <p align="left">
+                                &nbsp; &nbsp; &nbsp; ㆍ 나이 : <input type = "number" name= "age"/>
+                            </p>
+                            <p align="left">
+                                &nbsp; &nbsp; &nbsp; ㆍ 사는 시도 : 
+                            <select name= "sido"> 
+                                <option value="11">서울시</option>
+                                <option value="26">부산시</option>
+                                <option value="27">대구시</option>
+                                <option value="28">인천시</option>
+                                <option value="29">광주시</option>
+                                <option value="30">대전시</option>
+                                <option value="31">울산시</option>
+                                <option value="36">세종시</option>
+                                <option value="41">경기도</option>
+                                <option value="42">강원도</option>
+                                <option value="43">충청북도</option>
+                                <option value="44">충청남도</option>
+                                <option value="45">전라북도</option>
+                                <option value="46">전라남도</option>
+                                <option value="47">경상북도</option>
+                                <option value="48">경상남도</option>
+                                <option value="49">제주도</option>
+                            </select>
+                            </p>
+                            <p align="left">
+                                &nbsp; &nbsp; &nbsp; ㆍ 진료 과목 : 
+                            <select name = "type">
+                                <option value="23">가정의학과</option>
+                                <option value="20">결핵과</option>
+                                <option value="50">구강악안면외과</option>
+                                <option value="1">내과</option>
+                                <option value="9">마취통증의학과</option>
+                                <option value="17">방사선종양학과</option>
+                                <option value="18">병리과</option>
+                                <option value="15">비뇨의학과</option>
+                                <option value="10">산부인과</option>
+                                <option value="8">성형외과</option>
+                                <option value="11">소아청소년과</option>
+                                <option value="2">신경과</option>
+                                <option value="6">신경외과</option>
+                                <option value="12">안과</option>
+                                <option value="16">영상의학과</option>
+                                <option value="26">예방의학과</option>
+                                <option value="4">외과</option>
+                                <option value="24">응급의학과</option>
+                                <option value="13">이비인후과</option>
+                                <option value="0">일반의</option>
+                                <option value="21">재활의학과</option>
+                                <option value="3">정신건강의학과</option>
+                                <option value="5">정형외과</option>
+                                <option value="25">직업환경의학과</option>
+                                <option value="19">진단검사의학과</option>
+                                <option value="52">치과교정과</option>
+                                <option value="55">치과보존과</option>
+                                <option value="14">피부과</option>
+                                <option value="80">한방내과</option>
+                                <option value="89">한방응급</option>
+                                <option value="86">한방재활의학과</option>
+                                <option value="22">핵의학과</option>
+                                <option value="7">흉부외과</option>
+                            </select>
+                            </p>
+                            <p align="left">
+                            <span>&nbsp; &nbsp; &nbsp; ㆍ 코드의 첫 번째 영문자를 대문자로 입력해주세요*</span> </p>
+                            <p align="left">&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; 주상병코드 : <input type = "text" name= "jucode"/> </p>
+                            <p align="left">&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; 부상병코드 : <input type = "text" name= "bucode"/> </p>
+                            <p align="left">
+                                &nbsp; &nbsp; &nbsp; ㆍ 해당 병원 심결가산율 : 
+                            <select name = "rate"> 
+                                <option value = "0"> 0% </option>
+                                <option value = "0.15"> 15% </option>
+                                <option value = "0.20"> 20% </option>
+                                <option value = "0.25"> 25% </option>
+                                <option value = "0.30"> 30% </option>
+                            </select> 
+                            </p>
+                            <p align="left">
+                                &nbsp; &nbsp; &nbsp; ㆍ 진료 요일 : 
+                            <select name = "day">
+                                <option value ="0">월</option>
+                                <option value ="1">화</option>
+                                <option value ="2">수</option>
+                                <option value ="3">목</option>
+                                <option value ="4">금</option>
+                                <option value ="5">토</option>
+                                <option value ="6">일</option>
+                            </select>
+                            </p>
+                            <p align="center">
+                            <input type = "submit" value = "확인"> &nbsp;<input type = "reset" value="취소"/>
+                            </p>
+                        </form>
+                    </fieldset>
+                </div>
+                <div>
+                <h6>멀티캠퍼스 빅데이터 지능형 서비스 개발과정 1차 팀프로젝트 A반 2조 데이터뿌시기</h6>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="C:\\Workspace\\python\\빅데이터 지능형서비스 개발 팀프로젝트(21.9.27~10.6)\\Project-1\\조정범\\Data\\시각화자료들\\홈페이지 템플릿\\bare-gh\\js\\scripts.js"></script>
     </body>
 </html>
