@@ -16,7 +16,7 @@ async def home(request : Request) :
 
 
 @app.post("/info", response_class=HTMLResponse)
-async def info(sex : str = Form(...), age : int = Form(...), sido : str = Form(...),
+async def info(request : Request, sex : str = Form(...), age : int = Form(...), sido : str = Form(...),
                type : str = Form(...), jucode : str = Form(...), bucode : str = Form(...),
                rate : str = Form(...), day : str = Form(...)) :
     # 변수 타입 처리
@@ -33,7 +33,7 @@ async def info(sex : str = Form(...), age : int = Form(...), sido : str = Form(.
     # result = model.predict(sex, age, sido, type, jucode, bucode, rate, day)
 
     return result
-    # return templates.TemplateResponse("output.html",  {"request": request, "result": result})
+    # return templates.TemplateResponse("output.html",  {"request": request, "result" : result})
 
 ngrok_tunnel = ngrok.connect(8000)
 print ('Public URL:', ngrok_tunnel.public_url)
